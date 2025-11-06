@@ -74,7 +74,7 @@
     name: "运动水壶",
     description: "实用的运动水壶，适合各类运动场合使用",
     pointsRequired: 50,
-    image: "./image/水壶.jpg"
+  image: "./image/水杯.jpg"
       },
     {
         id: 2,
@@ -88,14 +88,14 @@
     name: "运动手环",
     description: "智能运动手环，记录你的运动数据",
     pointsRequired: 200,
-        iimage: "./image/手环.jpg"
+    image: "./image/手环.jpg"
       },
     {
         id: 4,
     name: "运动鞋",
     description: "专业运动鞋，提供良好的支撑和缓冲",
     pointsRequired: 300,
-        image: "./image/鞋子.png"
+    image: "./image/运动鞋.png"
       }
     ];
 

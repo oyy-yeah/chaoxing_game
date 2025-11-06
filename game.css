@@ -247,7 +247,9 @@
     .prize-image {
         width: 100%;
         height: 12rem;
-        object-fit: cover;
+        /* 改为 contain，避免图片被裁切；若想填满卡片并裁剪可改回 cover */
+        object-fit: contain;
+        background-color: #ffffff;
     }
 
     .prize-info {
