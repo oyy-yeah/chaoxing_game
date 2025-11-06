@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    /* 让整个页面成为一个居中容器，方便将 .center 放在页面中间 */
+    /* 固定为视口高度并禁止滚动 */
+    html, body {
+        height: 100vh;
+        margin: 0;
+        overflow: hidden; /* 禁止页面滚动 */
+    }
+  body {
+    display: flex;
+    flex-direction: column; /* 垂直堆叠子元素 */
+    justify-content: flex-end; /* 整组靠底部对齐 */
+    align-items: center; /* 水平居中 */
+    padding-bottom: 20px; /* 底部间距，按需调整 */
+    font-size: 60px; /* 基准字号，可被 .center 覆盖 */
+  }
+    .center {
+        font-weight: 700; /* 加粗 */
+        font-size: 55px;  /* 更大字号，按需调整 */
+        text-align: center;
+        line-height: 1.4;
+    }
+  /* 按钮样式：放在 .center 之上，通过 margin-bottom 保持 20px 间距 */
+  .button {
+    margin-bottom: 20px;
+    font-size: 26px;
+    font-weight: 600;
+    /* 可按需自定义宽度/边框/背景 */
+  }
+    .center > div {
+        margin: 6px 0;
+    }
+    .button {
+  cursor: pointer;
+  padding: 12px 18px;
+  border-radius: 30px;
+  border: none;
+  display: inline-block;
+  overflow: hidden;
+  background: #ffffff;
+  box-shadow:
+    inset 6px 6px 12px rgba(0, 0, 0, 0.1),
+    inset -6px -6px 12px rgba(255, 255, 255, 0.7),
+    6px 6px 12px rgba(0, 0, 0, 0.1),
+    -6px -6px 12px rgba(255, 255, 255, 0.7);
+  transition:
+    box-shadow 0.3s ease,
+    transform 0.1s ease;
+}
+
+.button span {
+  font-family: Arial, sans-serif;
+  font-weight: 900;
+  font-size: 24px;
+  color: #777;
+  text-shadow:
+    2px 2px 3px rgba(0, 0, 0, 0.2),
+    -2px -2px 3px rgba(255, 255, 255, 0.8);
+  position: relative;
+  display: inline-block;
+  transition: transform 0.3s ease-out;
+  z-index: 1;
+  padding: 0px 4px;
+}
+
+.button span:hover {
+  transform: translateY(-7px);
+  color: #444;
+  text-shadow:
+    2px 2px 5px rgba(0, 0, 0, 0.3),
+    -2px -2px 5px rgba(255, 255, 255, 0.9);
+}
+
+.button:hover {
+  box-shadow:
+    inset 3px 3px 6px rgba(0, 0, 0, 0.1),
+    inset -3px -3px 6px rgba(255, 255, 255, 0.9),
+    4px 4px 10px rgba(0, 0, 0, 0.1),
+    -4px -4px 10px rgba(255, 255, 255, 0.9);
+}
+
+.button:active {
+  box-shadow:
+    inset 2px 2px 4px rgba(0, 0, 0, 0.2),
+    inset -2px -2px 4px rgba(255, 255, 255, 0.8);
+  transform: scale(0.98);
+}
+
+</style>
+<body>
+
+    <button class="button">
+        <span>H</span>
+        <span>E</span>
+        <span>L</span>
+        <span>L</span>
+        <span>O</span>
+    </button>
+
+
+  <!-- <div class="button">按钮</div> -->
+  <div class="center" >
+    <div>你好，这里是岭动智健</div>
+    <div>有什么能帮助您</div>
+  </div>
+
+    
+</body>
+</html>
