@@ -1,116 +1,189 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>运动知识问答游戏</title>
+  <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="./game.css">
 </head>
-<style>
-    /* 让整个页面成为一个居中容器，方便将 .center 放在页面中间 */
-    /* 固定为视口高度并禁止滚动 */
-    html, body {
-        height: 100vh;
-        margin: 0;
-        overflow: hidden; /* 禁止页面滚动 */
-    }
-  body {
-    display: flex;
-    flex-direction: column; /* 垂直堆叠子元素 */
-    justify-content: flex-end; /* 整组靠底部对齐 */
-    align-items: center; /* 水平居中 */
-    padding-bottom: 20px; /* 底部间距，按需调整 */
-    font-size: 60px; /* 基准字号，可被 .center 覆盖 */
-  }
-    .center {
-        font-weight: 700; /* 加粗 */
-        font-size: 55px;  /* 更大字号，按需调整 */
-        text-align: center;
-        line-height: 1.4;
-    }
-  /* 按钮样式：放在 .center 之上，通过 margin-bottom 保持 20px 间距 */
-  .button {
-    margin-bottom: 20px;
-    font-size: 26px;
-    font-weight: 600;
-    /* 可按需自定义宽度/边框/背景 */
-  }
-    .center > div {
-        margin: 6px 0;
-    }
-    .button {
-  cursor: pointer;
-  padding: 12px 18px;
-  border-radius: 30px;
-  border: none;
-  display: inline-block;
-  overflow: hidden;
-  background: #ffffff;
-  box-shadow:
-    inset 6px 6px 12px rgba(0, 0, 0, 0.1),
-    inset -6px -6px 12px rgba(255, 255, 255, 0.7),
-    6px 6px 12px rgba(0, 0, 0, 0.1),
-    -6px -6px 12px rgba(255, 255, 255, 0.7);
-  transition:
-    box-shadow 0.3s ease,
-    transform 0.1s ease;
-}
-
-.button span {
-  font-family: Arial, sans-serif;
-  font-weight: 900;
-  font-size: 24px;
-  color: #777;
-  text-shadow:
-    2px 2px 3px rgba(0, 0, 0, 0.2),
-    -2px -2px 3px rgba(255, 255, 255, 0.8);
-  position: relative;
-  display: inline-block;
-  transition: transform 0.3s ease-out;
-  z-index: 1;
-  padding: 0px 4px;
-}
-
-.button span:hover {
-  transform: translateY(-7px);
-  color: #444;
-  text-shadow:
-    2px 2px 5px rgba(0, 0, 0, 0.3),
-    -2px -2px 5px rgba(255, 255, 255, 0.9);
-}
-
-.button:hover {
-  box-shadow:
-    inset 3px 3px 6px rgba(0, 0, 0, 0.1),
-    inset -3px -3px 6px rgba(255, 255, 255, 0.9),
-    4px 4px 10px rgba(0, 0, 0, 0.1),
-    -4px -4px 10px rgba(255, 255, 255, 0.9);
-}
-
-.button:active {
-  box-shadow:
-    inset 2px 2px 4px rgba(0, 0, 0, 0.2),
-    inset -2px -2px 4px rgba(255, 255, 255, 0.8);
-  transform: scale(0.98);
-}
-
-</style>
 <body>
 
-    <button class="button">
-        <span>H</span>
-        <span>E</span>
-        <span>L</span>
-        <span>L</span>
-        <span>O</span>
-    </button>
-
-
-  <!-- <div class="button">按钮</div> -->
-  <div class="center" >
-    <div>你好，这里是岭动智健</div>
-    <div>有什么能帮助您</div>
-  </div>
-
-    
+  </head>
+  
+  <body>
+    <!-- 导航栏 -->
+    <nav>
+      <div class="container nav-container">
+        <div class="nav-logo">
+          <i class="fa fa-futbol-o text-primary text-2xl"></i>
+          <span class="font-bold text-xl">运动知识问答</span>
+        </div>
+        <div class="nav-links">
+          <div id="points-display" class="points-display">
+            <i class="fa fa-trophy"></i>
+            <span id="current-points">0</span>
+            <span>积分</span>
+          </div>
+          <button id="prize-btn" class="btn btn-secondary text-sm hidden">
+            <i class="fa fa-gift mr-1"></i> 奖品兑换
+          </button>
+          <button id="home-btn" class="btn btn-secondary text-sm hidden">
+            <i class="fa fa-home mr-1"></i> 首页
+          </button>
+        </div>
+      </div>
+    </nav>
+  
+    <!-- 主内容区 -->
+    <main class="container">
+      <!-- 首页 -->
+      <section id="home-page" class="page">
+        <div class="mb-10">
+          <i class="fa fa-futbol-o text-primary text-6xl mb-4"></i>
+          <h1 style="font-size: clamp(2rem, 5vw, 3rem);" class="font-bold mb-4">运动知识问答游戏</h1>
+          <p class="text-gray-600 text-xl mb-8">测试你的运动知识，回答问题赢取积分，兑换精美虚拟奖品！</p>
+        </div>
+  
+        <div class="rules-card">
+          <h2 class="rules-title">
+            <i class="fa fa-info-circle text-primary"></i> 游戏规则
+          </h2>
+          <ul class="rules-list">
+            <li>
+              <i class="fa fa-check-circle text-secondary mt-1"></i>
+              <span>每答对一题获得相应积分</span>
+            </li>
+            <li>
+              <i class="fa fa-check-circle text-secondary mt-1"></i>
+              <span>积分可用于兑换虚拟奖品</span>
+            </li>
+            <li>
+              <i class="fa fa-check-circle text-secondary mt-1"></i>
+              <span>所有进度将保存在本地，刷新页面不会丢失</span>
+            </li>
+          </ul>
+        </div>
+  
+        <button id="start-game" class="btn btn-primary text-lg">
+          开始游戏 <i class="fa fa-play ml-2"></i>
+        </button>
+  
+        <div class="features-grid">
+          <div class="feature-card">
+            <i class="fa fa-question-circle text-primary feature-icon"></i>
+            <p class="feature-text">海量题库</p>
+          </div>
+          <div class="feature-card">
+            <i class="fa fa-star text-accent feature-icon"></i>
+            <p class="feature-text">赢取积分</p>
+          </div>
+          <div class="feature-card">
+            <i class="fa fa-gift text-secondary feature-icon"></i>
+            <p class="feature-text">兑换奖品</p>
+          </div>
+        </div>
+      </section>
+  
+      <!-- 游戏主界面 -->
+      <section id="game-page" class="page hidden">
+        <div class="game-header">
+          <div class="question-count">
+            问题 <span id="current-question-number">1</span>/<span id="total-questions">0</span>
+          </div>
+          <div class="game-points">
+            <i class="fa fa-trophy mr-1"></i>
+            <span id="game-points">0</span> 积分
+          </div>
+        </div>
+  
+        <div class="question-container">
+          <h2 id="question-text" class="question-text"></h2>
+        </div>
+  
+        <div id="options-container" class="options-container">
+          <!-- 选项将通过JS动态生成 -->
+        </div>
+  
+        <div class="btn-group">
+          <button id="quit-game" class="btn btn-secondary">
+            <i class="fa fa-sign-out mr-1"></i> 退出
+          </button>
+          <button id="show-prizes" class="btn btn-secondary">
+            <i class="fa fa-gift mr-1"></i> 查看奖品
+          </button>
+        </div>
+      </section>
+  
+      <!-- 答题结果页 -->
+      <section id="result-page" class="page hidden">
+        <div id="correct-result" class="hidden">
+          <div class="result-icon-container bg-secondary-light">
+            <i class="fa fa-check result-icon text-secondary"></i>
+          </div>
+          <h2 class="result-title text-secondary">回答正确！</h2>
+          <p class="result-text">太棒了，你获得了 <span id="points-earned" class="font-bold text-accent"></span> 积分！</p>
+        </div>
+  
+        <div id="incorrect-result" class="hidden">
+          <div class="result-icon-container bg-danger-light">
+            <i class="fa fa-times result-icon text-danger"></i>
+          </div>
+          <h2 class="result-title text-danger">回答错误</h2>
+          <p class="result-text">正确答案是：</p>
+          <p id="correct-answer" class="font-bold mb-4"></p>
+        </div>
+  
+        <div id="explanation" class="explanation">
+          <h3 class="explanation-title">知识拓展：</h3>
+          <p id="explanation-text"></p>
+        </div>
+  
+        <button id="next-question" class="btn btn-primary">
+          下一题 <i class="fa fa-arrow-right ml-1"></i>
+        </button>
+      </section>
+  
+      <!-- 奖品兑换页 -->
+      <section id="prizes-page" class="page hidden" style="max-width: 64rem;">
+        <div class="text-center mb-8">
+          <h2 class="prizes-title">奖品兑换中心</h2>
+          <p class="prizes-subtitle">你的当前积分：<span id="prize-points" class="font-bold text-accent"></span></p>
+        </div>
+  
+        <div id="prizes-container" class="prizes-container">
+          <!-- 奖品将通过JS动态生成 -->
+        </div>
+  
+        <div class="text-center">
+          <button id="back-to-game" class="btn btn-secondary">
+            <i class="fa fa-arrow-left mr-1"></i> 返回游戏
+          </button>
+        </div>
+      </section>
+  
+      <!-- 兑换成功提示 -->
+      <div id="redeem-success" class="modal">
+        <div class="modal-content">
+          <div class="modal-icon-container bg-secondary-light">
+            <i class="fa fa-check modal-icon text-secondary"></i>
+          </div>
+          <h3 class="modal-title">兑换成功！</h3>
+          <p id="redeem-message" class="modal-text"></p>
+          <button id="close-redeem" class="btn btn-primary modal-btn">
+            确定
+          </button>
+        </div>
+      </div>
+    </main>
+  
+    <!-- 页脚 -->
+    <footer>
+      <div class="container">
+        <p class="footer-text">© 2023 运动知识问答游戏 | 用知识挑战自我</p>
+      </div>
+    </footer>
+  
+  <script src="./game.js"></script>
 </body>
 </html>
